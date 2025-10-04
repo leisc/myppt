@@ -1,0 +1,18 @@
+{
+  "name": "myppt",
+  "version": "1.0.0",
+  "description": "Interactive slide deck with backend slide service",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "build:frontend": "npm run build --workspace frontend"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "openai": "^4.56.1"
+  },
+  "workspaces": [
+    "frontend"
+  ]
+}
