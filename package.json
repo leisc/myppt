@@ -10,9 +10,17 @@
   },
   "dependencies": {
     "express": "^4.19.2",
-    "openai": "^4.56.1"
+    "framer-motion": "^12.23.22",
+    "openai": "^4.56.1",
+    "recharts": "^3.2.1"
   },
   "workspaces": [
     "frontend"
-  ]
+  ],
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.14",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.14"
+  }
 }

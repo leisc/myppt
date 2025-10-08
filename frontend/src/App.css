@@ -373,6 +373,99 @@
   top: calc(1.25rem + 64px);
   height: 100%;
 }
+.deck-editor-main {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 2vw, 1.5rem);
+  height: 100%;
+  overflow: hidden;
+}
+
+.deck-metadata-form {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.deck-metadata-form input {
+  width: 100%;
+}
+
+.slide-editor-grid {
+  display: grid;
+  grid-template-columns: minmax(220px, 260px) 1fr;
+  gap: clamp(1rem, 2vw, 1.5rem);
+  flex: 1;
+  min-height: 0;
+}
+
+.slide-editor-list {
+  background: rgba(17, 24, 31, 0.8);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-height: 0;
+}
+
+.viewer-header.compact {
+  gap: 0.5rem;
+}
+
+.viewer-header.compact h3 {
+  margin: 0;
+}
+
+.viewer-header.compact .meta {
+  margin-left: auto;
+  font-size: 0.85rem;
+  color: var(--color-muted);
+}
+
+.slide-selector {
+  overflow-y: auto;
+  flex: 1;
+}
+
+.slide-selector button {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.slide-selector .slide-index {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.slide-selector button > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+}
+
+.slide-editor-form {
+  background: rgba(17, 24, 31, 0.8);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: clamp(1rem, 2vw, 1.5rem);
+  overflow-y: auto;
+}
+
+.slide-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.editor-actions {
+  display: flex;
+  justify-content: flex-end;
+}
 
 .deck-list {
   list-style: none;
@@ -442,6 +535,41 @@
   padding-right: 0.5rem;
 }
 
+/* Cover slide styling */
+.slide-frame.slide-cover {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  height: 100%;
+  gap: clamp(0.8rem, 1.5vw, 1.5rem);
+}
+
+.slide-frame.slide-cover .slide-content {
+  /* center the inner content vertically and horizontally */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(0.6rem, 1.2vw, 1rem);
+  width: 100%;
+}
+
+.slide-frame.slide-cover .slide-title,
+.slide-frame.slide-cover .slide-subtitle {
+  text-align: center;
+  margin: 0;
+  max-width: fit-content;
+}
+
+/* Reset the tagline auto-margin for cover slides so it stays with centered content */
+.slide-frame.slide-cover .slide-tagline {
+  margin-top: 0;
+  text-align: center;
+  color: var(--color-muted);
+}
+
 .viewer-shell:fullscreen,
 .viewer-shell:-webkit-full-screen,
 .viewer-shell:-moz-full-screen {
@@ -491,10 +619,24 @@
 .viewer-shell:fullscreen .slide-frame .slide-content,
 .viewer-shell:-webkit-full-screen .slide-frame .slide-content,
 .viewer-shell:-moz-full-screen .slide-frame .slide-content {
-  flex: 1;
+  /* don't force the slide-content to fill the frame; let it size to content
+     so justify-content:center will actually center inner elements */
+  flex: 0 1 auto;
   max-height: 100%;
   width: 100%;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Prevent taglines (which use margin-top: auto) from pushing content to the bottom
+   when we want vertical centering in fullscreen */
+.viewer-shell:fullscreen .slide-frame .slide-content .slide-tagline,
+.viewer-shell:-webkit-full-screen .slide-frame .slide-content .slide-tagline,
+.viewer-shell:-moz-full-screen .slide-frame .slide-content .slide-tagline {
+  margin-top: 0;
 }
 
 .viewer-shell:fullscreen .viewer-controls,
@@ -868,6 +1010,20 @@
   }
 }
 
+@media (max-width: 960px) {
+  .deck-editor-main {
+    height: auto;
+  }
+
+  .slide-editor-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .slide-editor-list {
+    max-height: 260px;
+  }
+}
+
 @media (max-width: 720px) {
   .hero-actions {
     flex-direction: column;
@@ -886,5 +1042,163 @@
 
   .progress-track {
     width: 100%;
+  }
+}
+
+/* Diagram / visual helpers used by DeckViewer */
+.diagram-container {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hub-diagram .hub-core {
+  width: 160px;
+  height: 160px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(99,164,255,0.18), rgba(133,123,255,0.12));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: 700;
+  color: var(--color-text);
+  border: 1px solid rgba(99,164,255,0.15);
+  box-shadow: 0 12px 30px rgba(4,10,18,0.35);
+}
+
+.hub-spoke {
+  position: absolute; /* positioning via framer-motion inline transforms */
+  width: 256px;
+  padding: 0.5rem;
+  border-radius: 12px;
+  background: rgba(17,24,31,0.78);
+  border: 1px solid rgba(99,164,255,0.12);
+  text-align: center;
+}
+
+.hub-spoke .spoke-label {
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.hub-spoke .spoke-desc {
+  color: var(--color-muted);
+  font-size: 0.95rem;
+}
+
+.ring-diagram .ring-center {
+  position: absolute;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--color-primary);
+}
+
+.ring-item {
+  position: absolute; /* coordinates controlled by framer-motion */
+  width: 112px;
+  padding: 0.5rem;
+  border-radius: 10px;
+  background: rgba(133,123,255,0.06);
+  border: 1px solid rgba(133,123,255,0.12);
+  text-align: center;
+}
+
+.pyramid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.pyramid-level {
+  background: linear-gradient(90deg, rgba(255,246,215,0.06), rgba(255,236,179,0.02));
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  text-align: center;
+  border: 1px solid rgba(255,213,114,0.08);
+}
+
+.pyramid-title {
+  margin: 0;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.flow-diagram {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.flow-step {
+  background: rgba(17,24,31,0.78);
+  padding: 0.6rem 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(99,164,255,0.12);
+  text-align: center;
+}
+
+.flow-step-title { font-weight: 700; }
+.flow-step-desc { color: var(--color-muted); font-size: 0.95rem; }
+.flow-arrow { font-size: 1.6rem; color: rgba(99,164,255,0.6); }
+
+.radar-diagram { display: flex; justify-content: center; align-items: center; padding: 0.5rem; }
+
+/* Image slide layouts --------------------------------------------------- */
+.slide-image-left {
+  display: grid;
+  grid-template-columns: minmax(240px, 60%) 1fr;
+  gap: 1.25rem;
+  align-items: center;
+}
+
+.slide-image-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.5rem;
+  /* limit width to 65% and keep centered */
+  width: 65%;
+  max-width: 65%;
+  margin: 0 auto;
+}
+
+
+.media-image {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 12px 30px rgba(4,12,22,0.35);
+  border: 1px solid var(--color-border);
+}
+
+.media-text {
+  color: var(--color-text);
+}
+
+.slide-image-caption {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--color-muted);
+}
+
+@media (max-width: 800px) {
+  .slide-image-left {
+    grid-template-columns: 1fr;
+  }
+  .slide-image-center {
+    /* allow full width on small screens */
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
   }
 }

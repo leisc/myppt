@@ -4,6 +4,7 @@ import "./App.css";
 const navLinks = [
   { to: "/", label: "Home" },
   { to: "/create", label: "Create" },
+  { to: "/edit", label: "Edit" },
   { to: "/present", label: "Present" }
 ];
 

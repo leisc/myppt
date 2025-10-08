@@ -5,7 +5,9 @@ const { deck, slides } = require("./backend/slidesData");
 const { DeckStore } = require("./backend/deckStore");
 const { generateDeckWithOpenAI } = require("./backend/llmService");
 
-const deckStore = new DeckStore();
+const deckStore = new DeckStore({
+  persistPath: path.join(__dirname, "backend", "data", "decks.json")
+});
 deckStore.seed(deck);
 
 const app = express();
@@ -39,6 +41,75 @@ app.post("/api/decks", async (req, res) => {
   } catch (error) {
     console.error("Failed to generate deck", error);
     return res.status(500).json({ message: "Failed to generate deck", detail: error.message });
+  }
+});
+
+app.put("/api/decks/:id", (req, res) => {
+  const deckId = req.params.id;
+  const { title, subtitle, slides: requestedSlides, theme, notes } = req.body || {};
+
+  if (!Array.isArray(requestedSlides)) {
+    return res.status(400).json({ message: "slides array is required" });
+  }
+
+  const normalizedSlides = [];
+
+  for (let index = 0; index < requestedSlides.length; index += 1) {
+    const slide = requestedSlides[index];
+    if (!slide || typeof slide !== "object") {
+      return res.status(400).json({ message: `Slide at index ${index} is invalid` });
+    }
+
+    if (!slide.id || typeof slide.id !== "string") {
+      return res.status(400).json({ message: `Slide at index ${index} is missing an id` });
+    }
+
+    if (!slide.layout || typeof slide.layout !== "string") {
+      return res.status(400).json({ message: `Slide ${slide.id} is missing a layout` });
+    }
+
+    if (slide.content == null || typeof slide.content !== "object") {
+      return res.status(400).json({ message: `Slide ${slide.id} must include content` });
+    }
+
+    normalizedSlides.push({
+      ...slide,
+      subtitle: slide.subtitle ?? null,
+      notes: slide.notes ?? null
+    });
+  }
+
+  try {
+    const updatePayload = {
+      slides: normalizedSlides
+    };
+
+    if (typeof title === "string") {
+      updatePayload.title = title;
+    }
+
+    if (subtitle === null || typeof subtitle === "string") {
+      updatePayload.subtitle = subtitle ?? null;
+    }
+
+    if (typeof theme === "string") {
+      updatePayload.theme = theme;
+    }
+
+    if (typeof notes === "string") {
+      updatePayload.notes = notes;
+    }
+
+    const updated = deckStore.update(deckId, updatePayload);
+
+    if (!updated) {
+      return res.status(404).json({ message: "Deck not found" });
+    }
+
+    return res.json({ deck: updated });
+  } catch (error) {
+    console.error("Failed to update deck", error);
+    return res.status(500).json({ message: "Failed to update deck", detail: error.message });
   }
 });
 

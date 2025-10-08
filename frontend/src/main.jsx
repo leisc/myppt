@@ -5,6 +5,7 @@ import "./index.css";
 import App from "./App.jsx";
 import LandingPage from "./pages/LandingPage.jsx";
 import CreateDeckPage from "./pages/CreateDeckPage.jsx";
+import EditDeckPage from "./pages/EditDeckPage.jsx";
 import PresenterPage from "./pages/PresenterPage.jsx";
 
 createRoot(document.getElementById("root")).render(
@@ -14,6 +15,7 @@ createRoot(document.getElementById("root")).render(
         <Route path="/" element={<App />}>
           <Route index element={<LandingPage />} />
           <Route path="create" element={<CreateDeckPage />} />
+          <Route path="edit" element={<EditDeckPage />} />
           <Route path="present" element={<PresenterPage />} />
         </Route>
       </Routes>

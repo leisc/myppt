@@ -1,10 +1,21 @@
 const slides = [
   {
+    id: "cover",
+    title: "AI in Cross-Country E-commerce",
+    subtitle: "Scaling Global Operations with Machine Intelligence",
+    layout: "cover",
+    content: {
+      tagline: "Prepared for your team — concise briefing"
+    },
+    notes: "Quickly introduce the deck and objectives."
+  },
+  {
     id: "intro",
     title: "AI in Cross-Country E-commerce",
     subtitle: "Scaling Global Operations with Machine Intelligence",
-    layout: "title",
+    layout: "text",
     content: {
+      items: ["[Your SaaS Logo Here]"],
       tagline: "[Your SaaS Logo Here]"
     },
     notes:
@@ -37,6 +48,25 @@ const slides = [
     },
     notes:
       "Make this slide interactive by asking which of these challenges is most painful for the audience today."
+  },
+  {
+    id: "ai-orchestration-hub",
+    title: "AI Orchestration Ecosystem",
+    subtitle: "How intelligence connects every global function",
+    layout: "hub",
+    content: {
+      core: "AI Orchestration Core",
+      spokes: [
+        { label: "Marketing", description: "Localized campaigns and A/B testing automation" },
+        { label: "Sales", description: "Dynamic product recommendations by region" },
+        { label: "Operations", description: "Forecasting and inventory optimization" },
+        { label: "Support", description: "Multilingual chatbots and sentiment routing" },
+        { label: "Finance", description: "Automated tax and FX reconciliation" },
+        { label: "Data Science", description: "Model retraining and monitoring pipelines" }
+      ]
+    },
+    notes:
+      "Show how AI orchestrates all key business functions from a single, learning center."
   },
   {
     id: "language-barrier",
@@ -157,6 +187,59 @@ const slides = [
       "Use this slide to assign swim-lane owners across GTM, product, and operations."
   },
   {
+    id: "ai-performance-radar",
+    title: "AI Capability Performance",
+    subtitle: "Benchmarking across global operations",
+    layout: "radar",
+    content: {
+      axes: ["Translation Quality", "Demand Forecast", "Dynamic Pricing", "Personalization", "Support Automation"],
+      values: [85, 80, 90, 70, 75],
+      maxValue: 100
+    },
+    notes:
+      "Use this to show which AI capabilities are strongest and where next investments should go."
+  },
+  {
+    id: "maturity-pyramid",
+    title: "AI Maturity Model",
+    subtitle: "Path to global AI excellence",
+    layout: "pyramid",
+    content: {
+      levels: [
+        {
+          title: "Level 1 — Automation",
+          description: "Task-level efficiency using rules and scripts."
+        },
+        {
+          title: "Level 2 — Intelligence",
+          description: "Predictive analytics embedded into regional workflows."
+        },
+        {
+          title: "Level 3 — Orchestration",
+          description: "Coordinated, adaptive AI across all markets and functions."
+        }
+      ]
+    },
+    notes:
+      "Explain how clients move from local pilots to enterprise-wide orchestration."
+  },
+  {
+    id: "ai-rollout-flow",
+    title: "Intelligent Rollout Lifecycle",
+    subtitle: "End-to-end flow of AI enablement",
+    layout: "flow",
+    content: {
+      steps: [
+        { title: "Assess", description: "Identify regional readiness and AI gaps" },
+        { title: "Configure", description: "Tune language, pricing, and logistics models" },
+        { title: "Deploy", description: "Launch pilot markets with control dashboards" },
+        { title: "Measure", description: "Track KPIs and retrain models continuously" }
+      ]
+    },
+    notes:
+      "Use this to emphasize continuous improvement and measurable ROI."
+  },
+  {
     id: "rollout-timeline",
     title: "90-Day Intelligent Rollout",
     subtitle: "Structured phases to launch and learn",
@@ -193,6 +276,42 @@ const slides = [
       ]
     },
     notes: "Highlight milestones and owners, then align on exit criteria before full rollout."
+  }
+  ,
+  {
+    id: "product-visual",
+    title: "Product Experience Snapshot",
+    subtitle: "Visual tour of the user flow",
+    layout: "image-left",
+    content: {
+      image: {
+        src: "./1.png",
+        alt: "Product screenshot or concept art"
+      },
+      caption: "Overview of the storefront and localized checkout",
+      text: {
+        heading: "Local checkout in action",
+        bullets: [
+          { label: "Localized UX", description: "Region-specific pricing and labels" },
+          { label: "Auto-currency", description: "Display prices in local currencies" }
+        ]
+      }
+    },
+    notes: "Use this slide to point out UX patterns and localization features."
+  },
+  {
+    id: "hero-image",
+    title: "AI-Powered Insights",
+    subtitle: "Data-driven personalization",
+    layout: "image-center",
+    content: {
+      image: {
+        src: "./1.jpeg",
+        alt: "Illustration representing insights"
+      },
+      caption: "Models run continuously to personalize the storefront"
+    },
+    notes: "A strong visual to break up dense content and re-engage the audience."
   }
 ];
 

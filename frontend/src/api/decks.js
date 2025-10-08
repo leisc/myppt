@@ -34,3 +34,9 @@ export const generateDeck = (payload) =>
   });
 
 export const fetchDefaultDeck = () => request("/api/deck");
+
+export const updateDeck = (deckId, payload) =>
+  request(`/api/decks/${deckId}`, {
+    method: "PUT",
+    body: JSON.stringify(payload)
+  });

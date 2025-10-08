@@ -20,7 +20,7 @@ Create concise slide decks in JSON following this schema:
       "id": kebab-case string,
       "title": string,
       "subtitle"?: string,
-      "layout": "title" | "bullets" | "two-column" | "three-column" | "timeline",
+      "layout": "cover" | "text" | "bullets" | "two-column" | "three-column" | "timeline",
       "content": object matching the layout,
       "notes"?: string
     }
@@ -29,7 +29,7 @@ Create concise slide decks in JSON following this schema:
 
 Rules:
 - Provide 4 to 8 slides covering the storyline: problem, solution, metrics, next steps.
-- For "title" layout, include { "tagline": string } inside content.
+- For "cover" or "text" layout, include { "tagline": string } inside content.
 - For "bullets", include { "bullets": [{ "label": string, "description": string }] }.
 - For "two-column", include { "left": {"subtitle"?, "bullets"?, "metrics"?}, "right": { ... } } with metrics array of { value, label }.
 - For "three-column", include { "columns": [{ "title": string, "items": [string | { "label": string, "description": string }] }] }.
@@ -49,11 +49,22 @@ const stubDeckFromPrompt = (prompt, { title, subtitle } = {}) => {
 
   const slides = [
     {
+      id: `${baseId}-cover`,
+      title: topic,
+      subtitle: subtitle || undefined,
+      layout: "cover",
+      content: {
+        tagline: `Prepared for ${subtitle || 'your team'}`
+      },
+      notes: `Introduce the ${topic} deck and objectives.`
+    },
+    {
       id: `${baseId}-overview`,
       title: `${topic} Overview`,
       subtitle: "Executive Summary",
-      layout: "title",
+      layout: "text",
       content: {
+        items: ["Auto-generated demo deck"],
         tagline: "Auto-generated demo deck"
       },
       notes: `Set the stage for ${topic} and highlight the opportunity.`

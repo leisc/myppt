@@ -1,4 +1,7 @@
+import React from "react";
 import { useEffect, useMemo, useState, useCallback, useRef } from "react";
+import { motion } from 'framer-motion';
+import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis } from 'recharts';
 
 const defaultDeckState = {
   title: "",
@@ -56,12 +59,28 @@ const SlideContent = ({ slide }) => {
   if (!slide) return null;
 
   switch (slide.layout) {
-    case "title":
+    case 'cover':
       return (
         <div className="slide-content">
           <h1 className="slide-title">{slide.title}</h1>
           {slide.subtitle && <p className="slide-subtitle">{slide.subtitle}</p>}
-          <p className="slide-tagline">{slide.content?.tagline}</p>
+          {slide.content?.tagline && <p className="slide-tagline">{slide.content.tagline}</p>}
+        </div>
+      );
+    case "text":
+      return (
+        <div className="slide-content">
+          <h1 className="slide-title">{slide.title}</h1>
+          {slide.subtitle && <p className="slide-subtitle">{slide.subtitle}</p>}
+          {/* render a simple list of text items for the 'text' layout */}
+          {slide.content?.items && (
+            <ul className="slide-list">
+              {slide.content.items.map((it, i) => (
+                <li key={i}>{typeof it === 'string' ? it : it.text || it.label || JSON.stringify(it)}</li>
+              ))}
+            </ul>
+          )}
+          {slide.content?.tagline && <p className="slide-tagline">{slide.content.tagline}</p>}
         </div>
       );
     case "bullets":
@@ -130,6 +149,176 @@ const SlideContent = ({ slide }) => {
         </div>
       );
     }
+    case 'hub': {
+      const core = slide.content?.core || "";
+      const spokes = slide.content?.spokes || [];
+      return (
+        <div className="slide-content">
+          <h1 className="slide-title">{slide.title}</h1>
+          {slide.subtitle && <p className="slide-subtitle">{slide.subtitle}</p>}
+          <motion.div className="diagram-container hub-diagram">
+            <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ duration: 0.6 }} className="hub-core">
+              {core}
+            </motion.div>
+            {spokes.map((s, i) => {
+              const angle = (i / (spokes.length || 1)) * 2 * Math.PI;
+              const x = 300 * Math.cos(angle);
+              const y = 200 * Math.sin(angle);
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ x: 0, y: 0, scale: 0, opacity: 0 }}
+                  animate={{ x, y, scale: 1, opacity: 1 }}
+                  transition={{ delay: 0.4 + i * 0.1 }}
+                  className="hub-spoke"
+                >
+                  <div className="spoke-label">{s.label}</div>
+                  {s.description && <div className="meta spoke-desc">{s.description}</div>}
+                </motion.div>
+              );
+            })}
+          </motion.div>
+        </div>
+      );
+    }
+
+    case 'image-left': {
+      const image = slide.content?.image || {};
+      const caption = slide.content?.caption;
+      const text = slide.content?.text || {};
+      return (
+        <div className="slide-content">
+          <h1 className="slide-title">{slide.title}</h1>
+          {slide.subtitle && <p className="slide-subtitle">{slide.subtitle}</p>}
+          <div className="slide-image-left">
+            <div>
+              {image?.src && <img className="media-image" src={image.src} alt={image.alt || slide.title} />}
+              {caption && <div className="slide-image-caption">{caption}</div>}
+            </div>
+            <div className="media-text">
+              {text.heading && <h3>{text.heading}</h3>}
+              {text.bullets && <ul className="slide-list">{text.bullets.map(renderBullet)}</ul>}
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    case 'image-center': {
+      const image = slide.content?.image || {};
+      const caption = slide.content?.caption;
+      return (
+        <div className="slide-content">
+          <h1 className="slide-title">{slide.title}</h1>
+          {slide.subtitle && <p className="slide-subtitle">{slide.subtitle}</p>}
+          <div className="slide-image-center">
+            {image?.src && <img className="media-image" src={image.src} alt={image.alt || slide.title} />}
+            {caption && <div className="slide-image-caption">{caption}</div>}
+          </div>
+        </div>
+      );
+    }
+
+    case 'ring': {
+      const center = slide.content?.center || "";
+      const items = slide.content?.items || [];
+      return (
+        <div className="slide-content">
+          <h1 className="slide-title">{slide.title}</h1>
+          {slide.subtitle && <p className="slide-subtitle">{slide.subtitle}</p>}
+          <motion.div className="diagram-container ring-diagram">
+            <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ duration: 0.5 }} className="ring-center">{center}</motion.div>
+            {items.map((item, i) => {
+              const angle = (i / (items.length || 1)) * 2 * Math.PI;
+              const x = 180 * Math.cos(angle);
+              const y = 180 * Math.sin(angle);
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ x: 0, y: 0, scale: 0, opacity: 0 }}
+                  animate={{ x, y, scale: 1, opacity: 1 }}
+                  transition={{ delay: 0.3 + i * 0.1 }}
+                  className="ring-item"
+                >
+                  {item}
+                </motion.div>
+              );
+            })}
+          </motion.div>
+        </div>
+      );
+    }
+
+    case 'pyramid':
+      return (
+        <div className="slide-content">
+          <h1 className="slide-title">{slide.title}</h1>
+          {slide.subtitle && <p className="slide-subtitle">{slide.subtitle}</p>}
+          <div className="pyramid">
+            {slide.content.levels.map((lvl, i) => (
+              <motion.div
+                key={i}
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ delay: i * 0.15 }}
+                className="pyramid-level"
+                style={{ width: `${100 - i * 10}%` }}
+              >
+                <h4 className="pyramid-title">{lvl.title}</h4>
+                <p className="meta">{lvl.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      );
+
+    case 'radar': {
+      const axes = slide.content?.axes || [];
+      const values = slide.content?.values || [];
+      const data = axes.map((axis, i) => ({ subject: axis, A: values[i] || 0 }));
+      const maxValue = slide.content?.maxValue || (values.length ? Math.max(...values) * 1.2 : 1);
+      return (
+        <div className="slide-content">
+          <h1 className="slide-title">{slide.title}</h1>
+          {slide.subtitle && <p className="slide-subtitle">{slide.subtitle}</p>}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+            className="flex justify-center"
+          >
+            <RadarChart outerRadius={120} width={400} height={300} data={data}>
+              <PolarGrid />
+              <PolarAngleAxis dataKey="subject" />
+              <PolarRadiusAxis domain={[0, maxValue]} />
+              <Radar name="Score" dataKey="A" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
+            </RadarChart>
+          </motion.div>
+        </div>
+      );
+    }
+
+    case 'flow': {
+      const steps = slide.content?.steps || [];
+      return (
+        <div className="slide-content">
+          <h1 className="slide-title">{slide.title}</h1>
+          {slide.subtitle && <p className="slide-subtitle">{slide.subtitle}</p>}
+          <motion.div className="flex items-center justify-center space-x-4">
+            {steps.map((s, i) => (
+              <React.Fragment key={i}>
+                <motion.div initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ delay: i * 0.2 }} className="bg-green-50 px-4 py-2 rounded-xl shadow text-center">
+                  <div className="font-semibold">{s.title}</div>
+                  {s.description && <div className="text-sm text-gray-600">{s.description}</div>}
+                </motion.div>
+                {i < steps.length - 1 && <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: i * 0.2 }} className="text-2xl text-gray-400">→</motion.span>}
+              </React.Fragment>
+            ))}
+          </motion.div>
+        </div>
+      );
+    }
+
     default:
       return <p className="slide-error">Unsupported slide layout.</p>;
   }
@@ -271,7 +460,7 @@ export default function DeckViewer({
 
       <section className="viewer-stage">
         <div className="slide-shell">
-          <div className="slide-frame">
+          <div className={`slide-frame ${currentSlide?.layout === 'cover' ? 'slide-cover' : ''}`}>
             {currentSlide ? (
               <SlideContent slide={currentSlide} />
             ) : (

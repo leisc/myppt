@@ -1,0 +1,571 @@
+[
+  {
+    "id": "ai-cross-country-commerce",
+    "title": "AI in Cross-Country E-commerce",
+    "subtitle": "Scaling global operations with machine intelligence",
+    "theme": "noir",
+    "slides": [
+      {
+        "id": "cover",
+        "title": "AI in Cross-Country E-commerce",
+        "subtitle": "Scaling Global Operations with Machine Intelligence",
+        "layout": "cover",
+        "content": {
+          "tagline": "Prepared for your team — concise briefing"
+        },
+        "notes": "Quickly introduce the deck and objectives."
+      },
+      {
+        "id": "intro",
+        "title": "AI in Cross-Country E-commerce",
+        "subtitle": "Scaling Global Operations with Machine Intelligence",
+        "layout": "text",
+        "content": {
+          "items": [
+            "[Your SaaS Logo Here]"
+          ],
+          "tagline": "[Your SaaS Logo Here]"
+        },
+        "notes": "Open with the scale of cross-border commerce and why AI orchestration matters for every region at once."
+      },
+      {
+        "id": "global-ecommerce-matrix",
+        "title": "The Global E-commerce Matrix",
+        "subtitle": "Key Challenges AI Solves",
+        "layout": "bullets",
+        "content": {
+          "bullets": [
+            {
+              "label": "Localization Lag",
+              "description": "Language barriers and culturally relevant messaging slow down launches."
+            },
+            {
+              "label": "Dynamic Pricing",
+              "description": "Currency swings and local competitors demand constant repricing."
+            },
+            {
+              "label": "Logistics Complexity",
+              "description": "Demand forecasting and cross-border shipping windows remain volatile."
+            },
+            {
+              "label": "Customer Experience",
+              "description": "24/7 support and personalization across every time zone."
+            }
+          ]
+        },
+        "notes": "Make this slide interactive by asking which of these challenges is most painful for the audience today."
+      },
+      {
+        "id": "ai-orchestration-hub",
+        "title": "AI Orchestration Ecosystem",
+        "subtitle": "How intelligence connects every global function",
+        "layout": "hub",
+        "content": {
+          "core": "AI Orchestration Core",
+          "spokes": [
+            {
+              "label": "Marketing",
+              "description": "Localized campaigns and A/B testing automation"
+            },
+            {
+              "label": "Sales",
+              "description": "Dynamic product recommendations by region"
+            },
+            {
+              "label": "Operations",
+              "description": "Forecasting and inventory optimization"
+            },
+            {
+              "label": "Support",
+              "description": "Multilingual chatbots and sentiment routing"
+            },
+            {
+              "label": "Finance",
+              "description": "Automated tax and FX reconciliation"
+            },
+            {
+              "label": "Data Science",
+              "description": "Model retraining and monitoring pipelines"
+            }
+          ]
+        },
+        "notes": "Show how AI orchestrates all key business functions from a single, learning center."
+      },
+      {
+        "id": "language-barrier",
+        "title": "AI Challenge 1: The Language Barrier",
+        "layout": "two-column",
+        "content": {
+          "left": {
+            "subtitle": "Solution: Neural Translation",
+            "bullets": [
+              {
+                "label": "Product Descriptions",
+                "description": "Localized tone and compliance checks before content goes live."
+              },
+              {
+                "label": "SEO",
+                "description": "AI generates long-tail keywords per locale for faster organic growth."
+              },
+              {
+                "label": "User Reviews",
+                "description": "Summaries keep merchandising teams aware of sentiment in any language."
+              }
+            ]
+          },
+          "right": {
+            "metrics": [
+              {
+                "value": "95%",
+                "label": "Drop in localization errors after rollout"
+              },
+              {
+                "value": "40+",
+                "label": "Languages orchestrated in parallel"
+              }
+            ]
+          }
+        },
+        "notes": "Share a customer story that highlights how translation quality drove conversion."
+      },
+      {
+        "id": "dynamic-pricing",
+        "title": "AI Challenge 2: Dynamic Pricing & Demand",
+        "layout": "two-column",
+        "content": {
+          "left": {
+            "metrics": [
+              {
+                "value": "12%",
+                "label": "Average revenue lift from AI pricing"
+              },
+              {
+                "value": "40M+",
+                "label": "Automated price calibrations per day"
+              }
+            ]
+          },
+          "right": {
+            "subtitle": "Solution: Predictive Optimization",
+            "bullets": [
+              {
+                "label": "Competitor Monitoring",
+                "description": "Regional price changes trigger intelligent counter moves."
+              },
+              {
+                "label": "Forecasting",
+                "description": "Models anticipate demand spikes around holidays, weather, and news."
+              },
+              {
+                "label": "Custom Duties",
+                "description": "Tariffs auto-roll into the final price shown to shoppers."
+              }
+            ]
+          }
+        },
+        "notes": "Call out integrations with pricing or ERP systems the audience already uses."
+      },
+      {
+        "id": "regional-expansion-playbook",
+        "title": "Regional Expansion Playbook",
+        "subtitle": "Focus areas for the next three markets",
+        "layout": "three-column",
+        "content": {
+          "columns": [
+            {
+              "title": "Market Readiness",
+              "items": [
+                "Assess regulatory requirements",
+                "Localize compliance workflows",
+                "Validate demand signals with pilot data"
+              ]
+            },
+            {
+              "title": "Experience Localization",
+              "items": [
+                {
+                  "label": "Messaging",
+                  "description": "Translate value props with culturally relevant tone"
+                },
+                {
+                  "label": "Catalog",
+                  "description": "Adjust assortment for local preferences"
+                },
+                "Automate in-language support responses"
+              ]
+            },
+            {
+              "title": "Operational Scaling",
+              "items": [
+                "Sync inventory and fulfillment SLAs",
+                "Instrument KPIs and alerting for each region",
+                "Enable multi-currency billing & tax automation"
+              ]
+            }
+          ]
+        },
+        "notes": "Use this slide to assign swim-lane owners across GTM, product, and operations."
+      },
+      {
+        "id": "ai-performance-radar",
+        "title": "AI Capability Performance",
+        "subtitle": "Benchmarking across global operations",
+        "layout": "radar",
+        "content": {
+          "axes": [
+            "Translation Quality",
+            "Demand Forecast",
+            "Dynamic Pricing",
+            "Personalization",
+            "Support Automation"
+          ],
+          "values": [
+            85,
+            80,
+            90,
+            70,
+            75
+          ],
+          "maxValue": 100
+        },
+        "notes": "Use this to show which AI capabilities are strongest and where next investments should go."
+      },
+      {
+        "id": "maturity-pyramid",
+        "title": "AI Maturity Model",
+        "subtitle": "Path to global AI excellence",
+        "layout": "pyramid",
+        "content": {
+          "levels": [
+            {
+              "title": "Level 1 — Automation",
+              "description": "Task-level efficiency using rules and scripts."
+            },
+            {
+              "title": "Level 2 — Intelligence",
+              "description": "Predictive analytics embedded into regional workflows."
+            },
+            {
+              "title": "Level 3 — Orchestration",
+              "description": "Coordinated, adaptive AI across all markets and functions."
+            }
+          ]
+        },
+        "notes": "Explain how clients move from local pilots to enterprise-wide orchestration."
+      },
+      {
+        "id": "ai-rollout-flow",
+        "title": "Intelligent Rollout Lifecycle",
+        "subtitle": "End-to-end flow of AI enablement",
+        "layout": "flow",
+        "content": {
+          "steps": [
+            {
+              "title": "Assess",
+              "description": "Identify regional readiness and AI gaps"
+            },
+            {
+              "title": "Configure",
+              "description": "Tune language, pricing, and logistics models"
+            },
+            {
+              "title": "Deploy",
+              "description": "Launch pilot markets with control dashboards"
+            },
+            {
+              "title": "Measure",
+              "description": "Track KPIs and retrain models continuously"
+            }
+          ]
+        },
+        "notes": "Use this to emphasize continuous improvement and measurable ROI."
+      },
+      {
+        "id": "rollout-timeline",
+        "title": "90-Day Intelligent Rollout",
+        "subtitle": "Structured phases to launch and learn",
+        "layout": "timeline",
+        "content": {
+          "phases": [
+            {
+              "phase": "Phase 1",
+              "title": "Discover & Align",
+              "activities": [
+                "Executive kickoff & goal setting",
+                "Audit data coverage and integrations",
+                "Define localization success metrics"
+              ]
+            },
+            {
+              "phase": "Phase 2",
+              "title": "Configure & Train",
+              "activities": [
+                "Deploy translation & pricing models",
+                "Run playbooks on sandbox orders",
+                "Enable success teams with guided flows"
+              ]
+            },
+            {
+              "phase": "Phase 3",
+              "title": "Launch & Optimize",
+              "activities": [
+                "Soft launch in two priority markets",
+                "Monitor leading indicators & feedback",
+                "Iterate pricing guardrails every week"
+              ]
+            }
+          ]
+        },
+        "notes": "Highlight milestones and owners, then align on exit criteria before full rollout."
+      },
+      {
+        "id": "product-visual",
+        "title": "Product Experience Snapshot",
+        "subtitle": "Visual tour of the user flow",
+        "layout": "image-left",
+        "content": {
+          "image": {
+            "src": "./1.png",
+            "alt": "Product screenshot or concept art"
+          },
+          "caption": "Overview of the storefront and localized checkout",
+          "text": {
+            "heading": "Local checkout in action",
+            "bullets": [
+              {
+                "label": "Localized UX",
+                "description": "Region-specific pricing and labels"
+              },
+              {
+                "label": "Auto-currency",
+                "description": "Display prices in local currencies"
+              }
+            ]
+          }
+        },
+        "notes": "Use this slide to point out UX patterns and localization features."
+      },
+      {
+        "id": "hero-image",
+        "title": "AI-Powered Insights",
+        "subtitle": "Data-driven personalization",
+        "layout": "image-center",
+        "content": {
+          "image": {
+            "src": "./1.jpeg",
+            "alt": "Illustration representing insights"
+          },
+          "caption": "Models run continuously to personalize the storefront"
+        },
+        "notes": "A strong visual to break up dense content and re-engage the audience."
+      }
+    ],
+    "createdAt": "2025-10-07T12:19:01.740Z",
+    "updatedAt": "2025-10-07T12:19:01.740Z"
+  },
+  {
+    "title": "AI in Health Care",
+    "subtitle": "Better life with AI",
+    "slides": [
+      {
+        "id": "cover",
+        "title": "AI in Health Care",
+        "subtitle": "Better life with AI",
+        "layout": "cover",
+        "content": {
+          "tagline": "Transforming patient care through intelligent technology"
+        },
+        "notes": "Opening slide to set the tone for AI transformation in healthcare"
+      },
+      {
+        "id": "what-is-ai",
+        "title": "What is AI in Healthcare?",
+        "subtitle": "Understanding the Technology",
+        "layout": "bullets",
+        "content": {
+          "bullets": [
+            {
+              "label": "Machine Learning Systems",
+              "description": "Algorithms that learn from medical data to identify patterns and make predictions"
+            },
+            {
+              "label": "Natural Language Processing",
+              "description": "Understanding and analyzing clinical documentation and patient communications"
+            },
+            {
+              "label": "Computer Vision",
+              "description": "Interpreting medical images like X-rays, MRIs, and CT scans with precision"
+            },
+            {
+              "label": "Predictive Analytics",
+              "description": "Forecasting disease progression and treatment outcomes based on data"
+            }
+          ]
+        },
+        "notes": "Establish foundational understanding of AI technologies in medical context"
+      },
+      {
+        "id": "why-ai",
+        "title": "Why AI Matters Now",
+        "subtitle": "Addressing Critical Healthcare Challenges",
+        "layout": "two-column",
+        "content": {
+          "left": {
+            "subtitle": "Current Challenges",
+            "bullets": [
+              {
+                "label": "Physician Burnout",
+                "description": "Growing administrative burden affecting care quality"
+              },
+              {
+                "label": "Diagnostic Errors",
+                "description": "Millions affected by misdiagnosis annually"
+              },
+              {
+                "label": "Rising Costs",
+                "description": "Healthcare spending outpacing inflation"
+              }
+            ]
+          },
+          "right": {
+            "subtitle": "AI Opportunities",
+            "bullets": [
+              {
+                "label": "Workflow Automation",
+                "description": "Reducing administrative tasks by up to 40%"
+              },
+              {
+                "label": "Enhanced Accuracy",
+                "description": "Improving diagnostic precision significantly"
+              },
+              {
+                "label": "Cost Reduction",
+                "description": "Potential to save billions in operational costs"
+              }
+            ]
+          }
+        },
+        "notes": "Highlight the urgency and value proposition of AI adoption"
+      },
+      {
+        "id": "how-ai",
+        "title": "How AI Works in Practice",
+        "subtitle": "Implementation Across Care Settings",
+        "layout": "three-column",
+        "content": {
+          "columns": [
+            {
+              "title": "Diagnosis",
+              "items": [
+                "Image analysis for radiology",
+                "Pattern recognition in lab results",
+                "Early disease detection"
+              ]
+            },
+            {
+              "title": "Treatment",
+              "items": [
+                "Personalized medicine plans",
+                "Drug discovery acceleration",
+                "Surgical assistance systems"
+              ]
+            },
+            {
+              "title": "Operations",
+              "items": [
+                "Patient flow optimization",
+                "Resource allocation",
+                "Predictive maintenance"
+              ]
+            }
+          ]
+        },
+        "notes": "Show practical applications across different healthcare domains"
+      },
+      {
+        "id": "metrics",
+        "title": "Proven Results",
+        "subtitle": "Measurable Impact of AI Implementation",
+        "layout": "two-column",
+        "content": {
+          "left": {
+            "subtitle": "Clinical Outcomes",
+            "metrics": [
+              {
+                "value": "30%",
+                "label": "Reduction in diagnostic errors"
+              },
+              {
+                "value": "25%",
+                "label": "Faster treatment decisions"
+              },
+              {
+                "value": "40%",
+                "label": "Improved patient satisfaction"
+              }
+            ]
+          },
+          "right": {
+            "subtitle": "Operational Efficiency",
+            "metrics": [
+              {
+                "value": "35%",
+                "label": "Administrative time saved"
+              },
+              {
+                "value": "20%",
+                "label": "Cost reduction in operations"
+              },
+              {
+                "value": "50%",
+                "label": "Staff productivity increase"
+              }
+            ]
+          }
+        },
+        "notes": "Present concrete data points demonstrating AI value"
+      },
+      {
+        "id": "next-steps",
+        "title": "Beyond Today",
+        "subtitle": "The Future of AI in Healthcare",
+        "layout": "timeline",
+        "content": {
+          "phases": [
+            {
+              "phase": "Phase 1",
+              "title": "Integration",
+              "activities": [
+                "Seamless EHR integration",
+                "Staff training programs",
+                "Pilot deployments"
+              ]
+            },
+            {
+              "phase": "Phase 2",
+              "title": "Expansion",
+              "activities": [
+                "Scale successful use cases",
+                "Cross-department collaboration",
+                "Advanced analytics deployment"
+              ]
+            },
+            {
+              "phase": "Phase 3",
+              "title": "Innovation",
+              "activities": [
+                "AI-driven research breakthroughs",
+                "Predictive population health",
+                "Autonomous care systems"
+              ]
+            }
+          ]
+        },
+        "notes": "Outline strategic roadmap for AI adoption and future vision"
+      }
+    ],
+    "id": "2c53732e-6024-41f8-9841-55993fa99769",
+    "createdAt": "2025-10-07T12:20:04.819Z",
+    "updatedAt": "2025-10-07T12:34:58.851Z"
+  }
+]
